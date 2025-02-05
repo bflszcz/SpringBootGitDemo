@@ -22,6 +22,6 @@ public class UserController {
     @PostMapping("/register")
     public Result<String> register(@RequestBody User user) {
         userService.addUser(user);
-        return new Result<>(200, "User registered successfully", null);
+        return new Result<>(200, "User registered successfully",null);
     }
 }
