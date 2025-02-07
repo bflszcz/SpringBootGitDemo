@@ -22,6 +22,7 @@ public class UserController {
     @PostMapping("/register")
     public Result<String> register(@RequestBody User user) {
         userService.addUser(user);
+        System.out.println("添加成功");
         return new Result<>(200, "User registered successfully",null);
     }
 }
