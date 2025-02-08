@@ -1,5 +1,8 @@
 package com.bflsz.springbootgit.pojo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +20,21 @@ public class Project {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String status;
-    private LocalDateTime createTime;
-    private LocalDateTime UpdateTime;
 
+
+    @Column(updatable = false)
+    private LocalDateTime createTime;
+
+    private LocalDateTime updateTime;
+
+    @PrePersist
+    protected void onCreate(){
+        createTime=LocalDateTime.now();
+        updateTime=LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate(){
+        updateTime=LocalDateTime.now();
+    }
 }

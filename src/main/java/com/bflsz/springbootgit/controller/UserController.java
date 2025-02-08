@@ -20,9 +20,9 @@ public class UserController {
 
     //用户注册
     @PostMapping("/register")
-    public Result<String> register(@RequestBody User user) {
+    public Result register(@RequestBody User user) {
         userService.addUser(user);
         System.out.println("添加成功");
-        return new Result<>(200, "User registered successfully",null);
+        return Result.success();
     }
 }
