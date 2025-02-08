@@ -28,4 +28,12 @@ public class ProjectController {
     public List<Project> showAllProjects(){
        return projectService.showProject();
     }
+
+    //根据ID删除项目
+    @PostMapping("/delete")
+    public Result<String> deleteProjectById(@RequestParam Integer id){
+        projectService.deleteProjectById(id);
+        System.out.println("删除成功");
+        return new Result<>(200,"Project where id="+id+" deleted successfully",null);
+    }
 }

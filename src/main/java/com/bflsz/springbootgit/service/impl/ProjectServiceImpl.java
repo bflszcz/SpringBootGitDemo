@@ -22,4 +22,10 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Project> showProject() {
         return projectMapper.showAllProject();
     }
+
+    @Override
+    public void deleteProjectById(Integer id) {
+        projectMapper.deleteProjectById(id);
+
+    }
 }
