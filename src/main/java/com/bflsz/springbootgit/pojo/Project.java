@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Project {
+    private int id;
     private String title;
     private String description;
     private String target;
