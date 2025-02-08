@@ -12,7 +12,7 @@ public interface UserMapper {
 
     @Insert("INSERT INTO user (username, password, role, email, create_time, update_time) " +
             "VALUES (#{username}, #{password}, #{role}, #{email}, #{createTime}, #{updateTime})")
-    @Options(useGeneratedKeys = true, keyProperty = "id")
+     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(User user);
 
     @Update("UPDATE user SET username = #{username}, password = #{password}, role = #{role}, " +
