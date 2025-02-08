@@ -1,10 +1,7 @@
 package com.bflsz.springbootgit.mapper;
 
 import com.bflsz.springbootgit.pojo.Project;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -19,6 +16,10 @@ public interface ProjectMapper {
     //展示所有项目
     @Select("SELECT * from project")
     List<Project> showAllProject();
+
+    //根据ID删除项目
+    @Delete("DELETE from project where id=#{id}")
+    int deleteProjectById(Integer id);
 
 
 }
