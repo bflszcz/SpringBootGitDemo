@@ -14,8 +14,9 @@ public class UserController {
 
     //通过id查询
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Integer id){
-        return userService.getUserById(id);
+    public Result getUserById(@PathVariable Integer id){
+        User userById = userService.getUserById(id);
+        return Result.success(userById);
     }
 
     //用户注册
