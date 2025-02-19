@@ -1,0 +1,8 @@
+package com.bflsz.springbootgit.service;
+
+import com.bflsz.springbootgit.pojo.Donate;
+import org.springframework.stereotype.Service;
+
+public interface DonateService {
+    void donate(Donate donate);
+}

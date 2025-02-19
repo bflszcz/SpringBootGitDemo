@@ -10,9 +10,11 @@ import com.bflsz.springbootgit.utils.R;
 import com.bflsz.springbootgit.utils.ResponseEnum;
 import com.bflsz.springbootgit.utils.TokenUtil;
 import io.micrometer.common.util.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -30,7 +32,7 @@ public class UserController {
     @PostMapping("/register")
     public Result register(@RequestBody User user) {
         userService.addUser(user);
-        System.out.println("添加成功");
+        log.info("添加成功");
         return Result.success();
     }
 
