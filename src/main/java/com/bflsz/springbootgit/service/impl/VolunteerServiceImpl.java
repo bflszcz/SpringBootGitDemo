@@ -15,16 +15,15 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Autowired
     VolunteerMapper volunteerMapper;
 
-    @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private ProjectMapper projectMapper;
-
     @Override
     public void applyVol(VolunteerApply volunteerApply) {
         volunteerApply.setApplyTime(LocalDateTime.now());
         volunteerMapper.insert(volunteerApply);
+    }
+
+    @Override
+    public void verify(int id, String status) {
+        volunteerMapper.update(id,status);
     }
 
 

@@ -6,4 +6,5 @@ public interface VolunteerService {
 
     void applyVol(VolunteerApply volunteerApply);
 
+    void verify(int id, String status);
 }
