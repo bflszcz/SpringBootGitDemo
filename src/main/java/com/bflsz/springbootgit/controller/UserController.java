@@ -40,7 +40,7 @@ public class UserController {
         if(StringUtils.isNotBlank(username)&&StringUtils.isNotBlank(password)){
             if("bflsz".equals(username)&&"123456".equals(password)){
                 User user=new User();
-                JSONObject jsonObject= JSONUtil.createObj().put("name","bflsz");
+                JSONObject jsonObject= JSONUtil.createObj().set("name","bflsz");
                 String token = TokenUtil.createToken(jsonObject);
                 user.setToken(token);
                 return R.ok(user);

@@ -21,4 +21,5 @@ public interface UserMapper {
 
     @Delete("DELETE FROM user WHERE id = #{id}")
     int deleteById(Integer id);
+
 }

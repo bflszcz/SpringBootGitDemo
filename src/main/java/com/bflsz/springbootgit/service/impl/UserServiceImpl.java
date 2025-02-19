@@ -5,8 +5,11 @@ import com.bflsz.springbootgit.pojo.User;
 import com.bflsz.springbootgit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.time.LocalDateTime;
+
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -19,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
+        user.setCreateTime(LocalDateTime.now());
         userMapper.insert(user);
     }
 
