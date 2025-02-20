@@ -17,7 +17,7 @@ public class DonateController {
 
     //创建捐赠
     @PostMapping
-    public Result donate(@RequestBody  Donate donate){
+    public Result donate(@RequestBody Donate donate){
         donateService.donate(donate);
         return Result.success();
     }

@@ -18,4 +18,12 @@ public class PostServiceImpl implements PostService {
         post.setPostTime(LocalDateTime.now());
         postMapper.insert(post);
     }
+
+    @Override
+    public void likePost(Integer postId) {
+        if(!postMapper.existsById(postId)){
+            throw new IllegalArgumentException("postId为"+postId+"的帖子不存在");
+        }
+        postMapper.update(postId);
+    }
 }
