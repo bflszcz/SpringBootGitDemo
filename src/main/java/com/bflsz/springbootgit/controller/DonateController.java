@@ -3,14 +3,12 @@ package com.bflsz.springbootgit.controller;
 import com.bflsz.springbootgit.pojo.Donate;
 import com.bflsz.springbootgit.pojo.Result;
 import com.bflsz.springbootgit.service.DonateService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+@Slf4j
 @RestController
-@RequestMapping("/donate")
+@RequestMapping("/donations")
 public class DonateController {
     @Autowired
     private DonateService donateService;
@@ -20,5 +18,12 @@ public class DonateController {
     public Result donate(@RequestBody Donate donate){
         donateService.donate(donate);
         return Result.success();
+    }
+
+    //生成捐赠报表
+    @GetMapping
+    public Result report(){
+        log.info("捐赠报表展示");
+        return Result.success(donateService.report());
     }
 }

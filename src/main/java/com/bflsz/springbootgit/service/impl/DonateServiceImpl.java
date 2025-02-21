@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class DonateServiceImpl implements DonateService {
@@ -17,5 +18,10 @@ public class DonateServiceImpl implements DonateService {
     public void donate(Donate donate) {
         donate.setDonateTime(LocalDateTime.now());
         donateMapper.insert(donate);
+    }
+
+    @Override
+    public List<Donate> report() {
+        return donateMapper.showAllDonations();
     }
 }
