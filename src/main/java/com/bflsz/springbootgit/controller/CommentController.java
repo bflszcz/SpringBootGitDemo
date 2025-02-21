@@ -21,9 +21,13 @@ public class CommentController {
             commentService.addComment(comment);
             log.info("回复发布成功");
             return Result.success();
-        } catch (Exception e) {
+        }catch (IllegalArgumentException e){
             log.error(e.getMessage());
-            return Result.error(e.getMessage());
+            return Result.error(400,e.getMessage());
+        }
+        catch (Exception e) {
+            log.error(e.getMessage());
+            return Result.error(500,"系统繁忙,请稍后再试");
         }
     }
 

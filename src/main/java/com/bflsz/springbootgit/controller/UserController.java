@@ -38,16 +38,22 @@ public class UserController {
 
     //用户登录
     @PostMapping("/login")
-    public R<User> login(String username,String password){
-        if(StringUtils.isNotBlank(username)&&StringUtils.isNotBlank(password)){
-            if("bflsz".equals(username)&&"123456".equals(password)){
-                User user=new User();
-                JSONObject jsonObject= JSONUtil.createObj().set("name","bflsz");
-                String token = TokenUtil.createToken(jsonObject);
-                user.setToken(token);
-                return R.ok(user);
-            }
+    public R<User> login(@RequestParam String username,@RequestParam String password){
+        User user=userService.login(username,password);
+        log.info("登录成功");
+        return R.ok(user);
+    }
+
+    //更改密码
+    @PostMapping("/modifyPassword")
+    public Result modifyPassword(@RequestParam Integer id,@RequestParam String oldPassword,@RequestParam String newPassword){
+        try {
+            userService.modifyPassword(id,oldPassword,newPassword);
+        } catch (IllegalArgumentException e) {
+            log.error(e.getMessage());
+            return Result.error(e.getMessage());
         }
-        return R.error(ResponseEnum.USERNAME_PASSWORD_ERROR);
+        log.info("密码更改成功");
+        return Result.success();
     }
 }

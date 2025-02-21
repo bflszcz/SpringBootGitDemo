@@ -15,11 +15,12 @@ public interface UserMapper {
      @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(User user);
 
-    @Update("UPDATE user SET username = #{username}, password = #{password}, role = #{role}, " +
-            "email = #{email}, update_time = #{updateTime} WHERE id = #{id}")
-    int update(User user);
+    @Update("UPDATE user SET password = #{password} WHERE id= #{id}")
+    int update(Integer id,String password);
 
     @Delete("DELETE FROM user WHERE id = #{id}")
     int deleteById(Integer id);
 
+    @Select("SELECT * FROM user where username=#{username}")
+    User selectByUsername(String username);
 }

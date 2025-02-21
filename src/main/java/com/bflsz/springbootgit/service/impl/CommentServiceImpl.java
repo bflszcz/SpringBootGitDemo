@@ -16,6 +16,11 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void addComment(Comment comment) {
+        if((comment.getParentCommentId())!=null){
+            if(!commentMapper.existsById(comment.getParentCommentId())){
+                throw new IllegalArgumentException("commentId为"+comment.getParentCommentId()+"的评论不存在");
+            }
+        }
         comment.setLikeCount(0);
         comment.setCommentTime(LocalDateTime.now());
         commentMapper.insert(comment);
