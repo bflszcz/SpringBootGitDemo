@@ -1,6 +1,7 @@
 package com.bflsz.springbootgit.mapper;
 
 import com.bflsz.springbootgit.pojo.Project;
+import com.bflsz.springbootgit.pojo.ProjectTask;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -20,6 +21,5 @@ public interface ProjectMapper {
     //根据ID删除项目
     @Delete("DELETE from project where id=#{id}")
     int deleteProjectById(Integer id);
-
 
 }
