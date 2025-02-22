@@ -14,6 +14,7 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
 
     @Override
     public void addTask(ProjectTask projectTask) {
+        projectTask.setStatus("not_started");
         projectTaskMapper.insert(projectTask);
     }
 

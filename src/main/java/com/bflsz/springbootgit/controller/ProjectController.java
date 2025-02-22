@@ -21,7 +21,7 @@ public class ProjectController {
     @PostMapping("/release")
     public Result release(@RequestBody Project project){
         projectService.addProject(project);
-        System.out.println("项目发布成功");
+       log.info("项目发布成功");
         return Result.success();
     }
 
@@ -39,7 +39,7 @@ public class ProjectController {
     @PostMapping("/delete")
     public Result deleteProjectById(@RequestParam Integer id){
         projectService.deleteProjectById(id);
-        System.out.println("删除成功");
+        log.info("删除成功");
         return Result.success();
     }
 }
